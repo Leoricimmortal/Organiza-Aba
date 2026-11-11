@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Organiza Aba</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div class="brand">
+        <img src="icons/icon48.png" alt="" class="brand-icon" />
+        <h1>Organiza Aba</h1>
+      </div>
+      <button id="btn-settings" class="icon-btn" title="Configurações" aria-label="Configurações">⚙️</button>
+    </header>
+
+    <div id="status-bar" class="status-bar hidden"></div>
+
+    <!-- TELA: LISTA -->
+    <section id="view-list" class="view">
+      <div id="counter" class="counter hidden">
+        <span id="counter-text">0 abas monitoradas</span>
+        <span id="counter-next" class="counter-next"></span>
+      </div>
+
+      <div id="rules-list" class="rules-list"></div>
+
+      <div id="empty-state" class="empty-state hidden">
+        <p>Nenhum domínio cadastrado ainda.</p>
+        <p class="muted">Adicione um domínio para começar a organizar suas abas.</p>
+      </div>
+
+      <button id="btn-add" class="btn btn-primary btn-block">+ Adicionar domínio</button>
+    </section>
+
+    <!-- TELA: FORMULÁRIO (adicionar/editar) -->
+    <section id="view-form" class="view hidden">
+      <h2 id="form-title">Adicionar domínio</h2>
+
+      <label class="field">
+        <span>Domínio</span>
+        <input type="text" id="input-domain" placeholder="exemplo.com.br" />
+      </label>
+
+      <div class="field-row">
+        <label class="field">
+          <span>Tempo</span>
+          <input type="number" id="input-time" min="1" step="1" placeholder="2" />
+        </label>
+
+        <label class="field">
+          <span>Unidade</span>
+          <select id="input-unit">
+            <option value="segundos">Segundos</option>
+            <option value="minutos" selected>Minutos</option>
+            <option value="horas">Horas</option>
+          </select>
+        </label>
+      </div>
+
+      <label class="field toggle-field">
+        <span>Regra ativa</span>
+        <label class="switch">
+          <input type="checkbox" id="input-status" checked />
+          <span class="slider"></span>
+        </label>
+      </label>
+
+      <p id="form-error" class="form-error hidden"></p>
+
+      <div class="form-actions">
+        <button id="btn-cancel" class="btn btn-secondary">Cancelar</button>
+        <button id="btn-save" class="btn btn-primary">Salvar</button>
+      </div>
+    </section>
+
+    <!-- TELA: CONFIGURAÇÕES -->
+    <section id="view-settings" class="view hidden">
+      <h2>Configurações</h2>
+
+      <label class="checkbox-field">
+        <input type="checkbox" id="setting-pinned" />
+        <span>Não fechar abas fixadas</span>
+      </label>
+
+      <label class="checkbox-field">
+        <input type="checkbox" id="setting-warn" />
+        <span>Mostrar aviso antes de fechar</span>
+      </label>
+
+      <label class="checkbox-field">
+        <input type="checkbox" id="setting-counter" />
+        <span>Mostrar contador de abas</span>
+      </label>
+
+      <h3 class="history-title">Atividade recente</h3>
+      <div id="history-list" class="history-list"></div>
+
+      <div class="form-actions">
+        <button id="btn-close-settings" class="btn btn-primary btn-block">Voltar</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
